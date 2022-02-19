@@ -9,7 +9,10 @@ function capitalA(s){
 //    let test1 =    
 let regex = /^[a-zA-Z]*\s([a-zA-Z]*\s(A))$/g
 let result = s.match(regex)
-    return result;
+   if (result !== null)
+    return true;
+    else
+    return false;
 }
 
 
@@ -19,7 +22,10 @@ which end with io (example@example.io) */
 function ioEmail(email){
  let regexEmail = /^(\w*)@(\w*)(.io)$/g 
    let resultEmail = email.match(regexEmail)
-    return resultEmail;
+   if (resultEmail !== null)
+    return true;
+    else
+    return false;
   
 }
 
@@ -31,16 +37,18 @@ required extention are jpg, jpeg and png.
 */
 
 function imagesSearcher(text){
-    
-     let arr = [];
+    let arr1= [];
+    let addimg = text.split(" ");
     let regexImg = /\w*(.jpeg|.jpg|.png)/gmi 
-    let resultImg = text.match(regexImg);
-    if (resultImg === true){
-            arr = resultImg ;
-    }
-    return arr ;
-}
 
+    addimg.forEach(element => {
+        if(element.match(regexImg) != null){
+        arr1.push(element);
+        }
+    });
+    return arr1;
+
+}
 
 describe("Test capitalA", ()=>{
     test("It should return true if the input has uppercase and lowercase characters (no numbers and symbols) and it should end with capital A else return false ", () => {
